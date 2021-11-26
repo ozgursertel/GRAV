@@ -4,5 +4,29 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    //Þu an sadece karakter hareketine odaklanalým ben ölüm durumlarýný ve tekrar baþlatma fonksiyonlarýný ayarlayacaðým sonra üzerine çalýþýrýz.
+    //ï¿½u an sadece karakter hareketine odaklanalï¿½m ben ï¿½lï¿½m durumlarï¿½nï¿½ ve tekrar baï¿½latma fonksiyonlarï¿½nï¿½ ayarlayacaï¿½ï¿½m sonra ï¿½zerine ï¿½alï¿½ï¿½ï¿½rï¿½z.
 }
+
+/** Assignmenttan kalan kodu comment olarak atÄ±yorum dursun burda :D
+    bool gameEnd = false;
+    public GameObject completeLevelUI;
+    public void CompleteLevel()
+    {
+        completeLevelUI.SetActive(true);
+    }
+
+    public void endGame()
+    {
+        if(gameEnd == false)
+        {
+            gameEnd = true;
+            Debug.Log("Game Over");
+            Invoke("Restart", 0);
+        }
+    }
+    void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    */
