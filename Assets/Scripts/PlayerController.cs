@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //Rigidbody ve SpriteRenderer Tanýmlamasý
-    Rigidbody2D rb;
-    SpriteRenderer spriteRenderer;
+    public Rigidbody2D rb;
+    public SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        getCompopnents();
+        getComponents();
     }
 
-    private void getCompopnents()
+    private void getComponents()
     {
-        //Burada Rigidbody2D ve SpirteRenderer componentlerini baðlayacaðýz GetComponent<> ile
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -32,13 +32,12 @@ public class PlayerController : MonoBehaviour
 
     private void changeSprite()
     {
-        //Burada karakterin sprite özelliðini deðiþteceðiz
-        //Karakterin baþ aþaðý gitmesi için sprite flip y yapmak gerekiyor
+     spriteRenderer.flipY = rb.gravityScale < 0;
     }
 
     private void changeGravity()
     {
-       //Burada rigidbody2d üzerinden gravity scale'ý - ile çarpacaðýz
+       rb.gravityScale *= -1;
     }
 
 }
