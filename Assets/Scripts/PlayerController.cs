@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public SpriteRenderer spriteRenderer;
+    Rigidbody2D rb;
+    SpriteRenderer spriteRenderer;
+    public float runningSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -23,16 +24,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             changeGravity();
             changeSprite();
         }
+        
     }
-
+    private void FixedUpdate()
+    {
+        rb.MovePosition(transform.position + Vector3.right * Time.deltaTime * runningSpeed);
+    }
     private void changeSprite()
     {
-     spriteRenderer.flipY = rb.gravityScale < 0;
+        AudioManager.instance.Play("Jump");
+        spriteRenderer.flipY = rb.gravityScale < 0;
     }
 
     private void changeGravity()
