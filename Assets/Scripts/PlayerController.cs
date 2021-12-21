@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && GameController.Instance.isGameStarted && !GameController.Instance.isGameEnded)
         {
             changeGravity();
             changeSprite();
@@ -33,7 +33,14 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.MovePosition(transform.position + Vector3.right * Time.deltaTime * runningSpeed);
+        if (GameController.Instance.isGameStarted)
+        {
+            rb.MovePosition(transform.position + Vector3.right * Time.deltaTime * runningSpeed);
+        }
+        if(transform.position.y < -5.5f || transform.position.y > 5.5f){
+            GameController.Instance.Death();
+        }
+        
     }
     private void changeSprite()
     {

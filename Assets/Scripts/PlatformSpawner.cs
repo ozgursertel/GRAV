@@ -14,14 +14,17 @@ public class PlatformSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        countdown = countdown - Time.deltaTime;
-        if (countdown <= 0)
+        if (GameController.Instance.isGameStarted)
         {
-            vec2 = new Vector2(x, 0);
-            platformSelectNum = UnityEngine.Random.Range(0,3);
-            SpawnLvls();
-            x = x + 12;
-            countdown = timer;
+            countdown = countdown - Time.deltaTime;
+            if (countdown <= 0)
+            {
+                vec2 = new Vector2(x, 0);
+                platformSelectNum = UnityEngine.Random.Range(0, 3);
+                SpawnLvls();
+                x = x + 12;
+                countdown = timer;
+            }
         }
     }
 
