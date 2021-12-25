@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class GoogleAds : MonoBehaviour
 {
-    private BannerView bannerView;
     private InterstitialAd interstitial;
 
 
@@ -21,7 +20,7 @@ public class GoogleAds : MonoBehaviour
     private void RequestInterstitial()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-8024314068234146~6263135410";
+        string adUnitId = "ca-app-pub-8024314068234146/4191128548";
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-8024314068234146~6263135410";
 #else

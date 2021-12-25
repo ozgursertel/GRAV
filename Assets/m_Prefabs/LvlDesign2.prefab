@@ -136,6 +136,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8277812077974844757, guid: e9065919545b4a047bce6422344e5c1a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9065919545b4a047bce6422344e5c1a, type: 3}
 --- !u!4 &3577520840718480195 stripped
@@ -198,6 +202,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Double Platfrom Reverse
       objectReference: {fileID: 0}
+    - target: {fileID: 3622369604386555999, guid: 0268e98a627800a4f8d0e32c23e48f9e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0268e98a627800a4f8d0e32c23e48f9e, type: 3}
 --- !u!4 &5976181473654471232 stripped
@@ -255,6 +263,10 @@ PrefabInstance:
     - target: {fileID: 6660268795007514120, guid: 481a2045307c53b4291ceada96fcc8a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6660268795007514121, guid: 481a2045307c53b4291ceada96fcc8a3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6660268795007514123, guid: 481a2045307c53b4291ceada96fcc8a3, type: 3}
       propertyPath: m_Name

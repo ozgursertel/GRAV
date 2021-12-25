@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     public float runningSpeed;
+    Vector3 previousPos;
+    private bool isTouched;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +26,35 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if UNITY_STANDALONE
         if (Input.GetMouseButtonDown(0) && GameController.Instance.isGameStarted && !GameController.Instance.isGameEnded)
         {
             changeGravity();
             changeSprite();
         }
-        
+#endif
+#if UNITY_ANDROID
+        if(Input.touchCount>0 && GameController.Instance.isGameStarted && !GameController.Instance.isGameEnded)
+        {
+            Touch touch = Input.GetTouch(0);
+            if(touch.phase == TouchPhase.Began)
+            {
+                if (!isTouched)
+                {
+                    changeGravity();
+                    changeSprite();
+                    isTouched = true;
+                }
+               
+            }
+            if(touch.phase == TouchPhase.Ended)
+            {
+                isTouched = false;
+            }
+        }
+#endif
+
+
     }
     private void FixedUpdate()
     {
@@ -39,8 +64,7 @@ public class PlayerController : MonoBehaviour
         }
         if(transform.position.y < -5.5f || transform.position.y > 5.5f){
             GameController.Instance.Death();
-        }
-        
+        } 
     }
     private void changeSprite()
     {

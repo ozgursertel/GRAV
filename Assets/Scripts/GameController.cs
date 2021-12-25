@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
 
@@ -23,9 +23,9 @@ public class GameController : MonoBehaviour
     private GoogleAds adsScript;
     public GameObject startPanel;
     public GameObject inGamePanel;
-
-    public GameObject ScoreObject;
-    TextMeshPro scoreText;
+    public GameObject endGamePanel;
+    public GameObject creditsPanel;
+    public TextMeshProUGUI scoreText;
     
     //public GameObject endPanel;
     private void Start()
@@ -34,31 +34,31 @@ public class GameController : MonoBehaviour
         isGameStarted = false;
         startPanel.SetActive(true);
         inGamePanel.SetActive(false);
-        adsScript=googleAds.GetComponent<GoogleAds>();
-        scoreText = ScoreObject.GetComponent<TextMeshPro>();
-
+        adsScript = googleAds.GetComponent<GoogleAds>();
     }
 
     private void Update()
     {
         Score = (int)player.transform.position.z;
-        scoreText.SetText("Score : " + Score);
     }
 
     public void Death()
     {
         isGameStarted = false;
         isGameEnded = true;
+        endGamePanel.SetActive(true);
+        inGamePanel.SetActive(false);
         adsScript.GameOver();
     }
 
     public void Restart()
     {
-        //UI tasarlandýktan sonra scene manager ile bu çaðýralacak
+        //UI tasarlandï¿½ktan sonra scene manager ile bu ï¿½aï¿½ï¿½ralacak
     }
 
     public void GameStarted()
     {
+        Debug.Log("S");
         startPanel.SetActive(false);
         inGamePanel.SetActive(true);
         isGameStarted = true;
@@ -76,7 +76,24 @@ public class GameController : MonoBehaviour
 
     public void addCoin()
     {
-        //Player Coin Collisonu olduðu zaman bu fonksiyon çaðýralacak
+        //Player Coin Collisonu olduï¿½u zaman bu fonksiyon ï¿½aï¿½ï¿½ralacak
+    }
+
+    public void mainMenu()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void credits()
+    {
+        startPanel.SetActive(false);
+        endGamePanel.SetActive(false);
+        creditsPanel.SetActive(true);
+    }
+
+    public void quit()
+    {
+        Application.Quit();
     }
 
 }
